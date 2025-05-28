@@ -4,15 +4,46 @@ const scanBtn = document.getElementById('scanBtn');
 const imageInput = document.getElementById('imageInput');
 const output = document.getElementById('outputText');
 const speakBtn = document.getElementById('speakBtn');
-let lastParsedData = null;
+const toggleCameraBtn = document.getElementById('toggleCameraBtn');
 
-// Start webcam
+let lastParsedData = null;
+let currentFacingMode = 'environment'; // default to back camera
+let currentStream = null;
+
+// Function to start the camera with given facing mode
+async function startCamera(facingMode) {
+  // Stop any existing camera stream
+  if (currentStream) {
+    currentStream.getTracks().forEach(track => track.stop());
+  }
+
+  try {
+    const constraints = {
+      video: {
+        facingMode: { ideal: facingMode }
+      },
+      audio: false
+    };
+
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    video.srcObject = stream;
+    currentStream = stream;
+  } catch (error) {
+    console.error("Camera initialization failed:", error);
+    output.innerHTML = "🚫 Unable to access the camera. Please check browser permissions.";
+  }
+}
+
+// Initialize camera on page load
+startCamera(currentFacingMode);
+
+// Toggle camera button click event
 toggleCameraBtn.addEventListener('click', () => {
   currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
   startCamera(currentFacingMode);
 });
 
-// Scan from camera
+// Scan from camera button click event
 scanBtn.addEventListener('click', () => {
   const context = canvas.getContext('2d');
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -108,6 +139,7 @@ function speakParsedInfo(data) {
   const utterance = new SpeechSynthesisUtterance(message);
   speechSynthesis.speak(utterance);
 }
+
 const contrastToggle = document.getElementById('contrastToggle');
 
 contrastToggle.addEventListener('click', () => {

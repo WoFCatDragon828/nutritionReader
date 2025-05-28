@@ -7,8 +7,9 @@ const speakBtn = document.getElementById('speakBtn');
 let lastParsedData = null;
 
 // Start webcam
-navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-  video.srcObject = stream;
+toggleCameraBtn.addEventListener('click', () => {
+  currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+  startCamera(currentFacingMode);
 });
 
 // Scan from camera

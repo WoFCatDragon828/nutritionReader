@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nutrition Label Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button id="contrastToggle">🌓 Toggle Contrast</button>
+
+  <h1>Nutrition Label Scanner</h1>
+
+  <section>
+    <h2>📸 Use Camera</h2>
+    <video id="video" autoplay playsinline width="320" height="240"></video><br>
+    <button id="scanBtn">Scan Frame from Camera</button>
+  </section>
+
+  <section>
+    <h2>📁 Upload Image</h2>
+    <input type="file" id="imageInput" accept="image/*" />
+  </section>
+
+  <div id="outputText"></div>
+  <button id="speakBtn" style="display:none;">🔊 Speak Nutrition Info</button>
+
+  <!-- Hidden canvas for processing both video and image -->
+  <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

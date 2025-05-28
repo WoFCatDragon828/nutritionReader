@@ -1,0 +1,160 @@
+:root {
+  /* Light mode colors */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #a66bff;         /* light purple */
+  --highlight-color: #4de5e5;      /* light aqua */
+  --button-bg: #a66bff;
+  --button-text: #ffffff;
+  --border-color: #e0e0e0;
+
+  /* Dark mode colors */
+  --bg-color-dark: #1a1a1a;
+  --text-color-dark: #e7d9ff;           /* lighter purple text for contrast */
+  --accent-color-dark: #c9a8ff;         /* softer purple for headings */
+  --highlight-color-dark: #8ffcf4;      /* brighter aqua for hover and accents */
+  --button-bg-dark: #4b3a6b;
+}
+
+/* Light mode base */
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode base */
+body.dark-mode {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Title colors stay consistent in both modes */
+h1, h2,
+.dark-mode h1,
+.dark-mode h2 {
+  color: var(--accent-color);
+  margin-top: 0;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+input[type="file"],
+button {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode button {
+  background-color: var(--button-bg-dark);
+  color: var(--text-color-dark);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode button:hover {
+  background-color: var(--highlight-color-dark);
+  color: #000;
+}
+
+.dark-mode button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+video {
+  border: 2px solid var(--accent-color);
+  border-radius: 6px;
+}
+
+.dark-mode video {
+  border-color: var(--highlight-color-dark);
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.dark-mode pre {
+  background-color: #2b2b2b;
+  color: var(--text-color-dark);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  color: var(--text-color);
+}
+
+.dark-mode ul {
+  color: var(--text-color-dark);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+canvas {
+  display: none;
+}
+
+#contrastToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.15s ease;
+}
+
+#contrastToggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode #contrastToggle {
+  background-color: var(--highlight-color-dark);
+  color: black;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode #contrastToggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}

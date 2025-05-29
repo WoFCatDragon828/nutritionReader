@@ -18,7 +18,7 @@
 
 /* Light mode base */
 body {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Comic Sans MS', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
